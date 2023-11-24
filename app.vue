@@ -1,8 +1,8 @@
 <template>
-	<div class="flex">
-		<AppNavigation />
-		<main>
-			<NuxtPage />
-		</main>
-	</div>
+  <div class="flex">
+    <AppNavigation />
+    <main>
+      <NuxtPage />
+    </main>
+  </div>
 </template>
