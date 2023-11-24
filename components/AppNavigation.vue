@@ -1,4 +1,4 @@
-<script setup>
+<script>
 	const entries = [
 		{
 			name: 'Home',
@@ -11,6 +11,14 @@
 			icon: 'heroicons:puzzle-piece-solid',
 		},
 	];
+
+	export default {
+		data() {
+			return {
+				entries: entries
+			}	
+		}
+	}
 </script>
 
 <template>
