@@ -6,7 +6,7 @@
       <AppNavigation />
       <div class="bg-gray-200 dark:bg-gray-800 w-0.5" />
     </div>
-    <main class="px-2 sm:w-2/3">
+    <main class="px-2 sm:w-2/3 w-full sm:px-4 py-2">
       <NuxtPage />
     </main>
   </div>
