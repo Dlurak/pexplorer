@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-import { getImageUrlForPokemon } from "../utils/getImageUrl";
+import type { PokemonDetails } from "../types/pokemon";
+import PokemonTypes from "./PokemonCard/PokemonTypes.vue";
+import PokemonId from "./PokemonCard/PokemonId.vue";
 
 const props = defineProps({
   name: {
@@ -12,77 +14,24 @@ const props = defineProps({
   },
 });
 
-type PokemonAbility = {
-  is_hidden: boolean;
-  slot: number;
-  ability: {
-    name: string;
-    url: string;
-  };
-};
-
-type PokemonForm = {
-  name: string;
-  url: string;
-};
-
-type GameIndex = {
-  game_index: number;
-  version: {
-    name: string;
-    url: string;
-  };
-};
-
-type PokemonType = {
-  slot: number;
-  type: {
-    name: string;
-    url: string;
-  };
-};
-
-type PokemonDetails = {
-  id: number;
-  name: string;
-  base_experience: number;
-
-  height: number;
-  is_default: boolean;
-  order: number;
-  weight: number;
-  abilities: PokemonAbility[];
-
-  forms: PokemonForm[];
-  game_indices: GameIndex[];
-  types: PokemonType[];
-};
-
 const response = useFetch<PokemonDetails>(props.url);
 const data = response.data;
 </script>
 
 <template>
-  <div class="rounded-lg flex">
-    <div>
-      <h3 class="capitalize">{{ props.name }}</h3>
-      <div v-if="data" class="contents">
+  <div v-if="data" class="rounded-lg flex flex-col p-2 h-full">
+    <h3 class="mb-2.5">{{ props.name }}</h3>
+    <div class="w-full flex">
+      <div class="w-full flex justify-between flex-col">
         <div>
-          <div>
-            <b>Type:</b>
-            <ul>
-              <li v-for="type in data.types" :key="type.slot">
-                {{ type.type.name }}
-              </li>
-            </ul>
-          </div>
-          <div>
-            {{ data.id }}
-          </div>
+          <b>Type:</b>
+          <PokemonTypes :types="data.types" />
         </div>
-        <div>
-          <NuxtImg :src="getImageUrlForPokemon(data.id)" />
-        </div>
+        <PokemonId :poid="data.id" />
+      </div>
+
+      <div class="flex items-center justify-center w-1/2">
+        <NuxtImg :src="getImageUrlForPokemon(data.id)" />
       </div>
     </div>
   </div>

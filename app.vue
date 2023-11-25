@@ -1,3 +1,7 @@
+<script>
+import "./styles/global.css";
+</script>
+
 <template>
   <div
     class="flex min-h-screen bg-slate-50 dark:bg-zinc-900 text-black dark:text-white"
