@@ -15,22 +15,22 @@ const props = defineProps({
 });
 
 const bgHex = ref<string>(getBgColor("unknown"));
+const textColor = ref<"white" | "black">(whiteOrBlackText(bgHex.value));
 
 const response = useFetch<PokemonDetails>(props.url, {
   onResponse({ response }) {
     const colorString = response._data.types[0]?.type.name || "unknown";
     bgHex.value = getBgColor(colorString);
+    textColor.value = whiteOrBlackText(bgHex.value);
   },
 });
 const { pending, data } = response;
-
-const tailwindBg = "bg-[var(--bg)]";
 </script>
 
 <template>
-  <div :style="{ '--bg': bgHex }" :class="{ card: true, [tailwindBg]: true }">
+  <div :style="{ '--bg': bgHex, '--txt': textColor }" class="card">
     <div v-if="pending" class="h-full flex items-center justify-center">
-      Loading
+      <SkeletonCard :name="props.name" />
     </div>
     <div v-else-if="data" class="w-full flex">
       <div class="w-full flex justify-between flex-col">
@@ -44,7 +44,7 @@ const tailwindBg = "bg-[var(--bg)]";
 
       <div class="flex items-center justify-center w-1/2 relative isolate">
         <div class="absolute -z-10 right-0 bottom-0 w-full">
-          <NuxtImg src="/pokeball.svg" class="rotate-12 w-[150%] h-[150%]" />
+          <NuxtImg src="/pokeball.svg" class="rotate-12 w-full h-full" />
         </div>
         <NuxtImg
           :src="getImageUrlForPokemon(data.id)"
@@ -58,6 +58,6 @@ const tailwindBg = "bg-[var(--bg)]";
 
 <style>
 .card {
-  @apply rounded-lg flex flex-col p-2 h-full;
+  @apply rounded-lg flex flex-col p-2 h-full bg-[var(--bg)] text-[var(--txt)];
 }
 </style>

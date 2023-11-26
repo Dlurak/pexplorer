@@ -13,7 +13,7 @@ type PokeResponse = {
 };
 
 const query = async ({ pageParam = 0 }) => {
-  const perPage = 12;
+  const perPage = 15;
   const offset = pageParam * perPage;
   const response = await useFetch<PokeResponse>(
     `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${perPage}`,
@@ -41,6 +41,14 @@ const { data, error, fetchNextPage, isFetchingNextPage, hasNextPage } =
       >
         <li v-for="result of page?.results || []" :key="result.name">
           <PokemonCard :name="result.name" :url="result.url" />
+        </li>
+      </ul>
+      <ul
+		  v-if="isFetchingNextPage"
+        class="grid grid-cols-[repeat(auto-fit,minmax(min(20rem,100%),1fr))] gap-3"
+      >
+        <li v-for="_ of new Array(15).fill(null)">
+          <SkeletonCard />
         </li>
       </ul>
       <button
