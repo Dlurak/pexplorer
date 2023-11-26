@@ -32,7 +32,8 @@ const { pending, data } = response;
     <div v-if="pending" class="h-full flex items-center justify-center">
       <SkeletonCard :name="props.name" />
     </div>
-    <div v-else-if="data" class="w-full flex">
+
+    <a v-else-if="data" class="w-full flex" :href="`/${props.name}`">
       <div class="w-full flex justify-between flex-col">
         <h3 class="mb-2.5">{{ props.name }}</h3>
         <div class="flex gap-4">
@@ -66,7 +67,7 @@ const { pending, data } = response;
           loading="lazy"
         />
       </div>
-    </div>
+    </a>
   </div>
 </template>
 

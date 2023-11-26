@@ -21,7 +21,7 @@ const elements = [
   "shadow",
 ] as const;
 
-type TElement = (typeof elements)[number];
+export type TElement = (typeof elements)[number];
 
 const colors: Record<TElement, string> = {
   normal: "#A8A878",
