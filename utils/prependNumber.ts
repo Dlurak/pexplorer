@@ -40,4 +40,3 @@ export const prependNumber = <N extends number, MD extends number>(
 
   return `${"0".repeat(leadingZeros)}${numString}` as PrependNumber<N, MD>;
 };
-
