@@ -23,7 +23,7 @@ export default {
 
 <template>
   <nav
-    class="absolute sm:static sm:bg-gradient-to-r sm:bottom-auto bg-slate-50 dark:bg-zinc-900 bottom-0 w-full py-2 sm:h-full"
+    class="fixed z-20 sm:static sm:bg-gradient-to-r sm:bottom-auto bg-slate-50 dark:bg-zinc-900 bottom-0 w-full py-2 sm:h-full"
   >
     <ul class="flex justify-evenly flex-row sm:gap-1 sm:flex-col">
       <li

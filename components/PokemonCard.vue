@@ -42,7 +42,9 @@ const { pending, data } = response;
         <PokemonId :poid="data.id" />
       </div>
 
-      <div class="flex items-center justify-center w-1/2 relative isolate">
+      <div
+        class="flex items-center justify-center w-1/2 relative isolate min-h-[8rem] aspect-square"
+      >
         <div class="absolute -z-10 right-0 bottom-0 w-full">
           <NuxtImg src="/pokeball.svg" class="rotate-12 w-full h-full" />
         </div>
