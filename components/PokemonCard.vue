@@ -35,9 +35,21 @@ const { pending, data } = response;
     <div v-else-if="data" class="w-full flex">
       <div class="w-full flex justify-between flex-col">
         <h3 class="mb-2.5">{{ props.name }}</h3>
-        <div>
-          <b>Type:</b>
-          <PokemonTypes :types="data.types" />
+        <div class="flex gap-4">
+          <div>
+            <b>Type:</b>
+            <PokemonTypes :types="data.types" />
+          </div>
+          <div>
+            <div class="flex gap-1 items-center">
+              <Icon name="fa6-solid:weight-hanging" />
+              {{ data.weight / 10 }}KG
+            </div>
+            <div class="flex gap-1 items-center">
+              <Icon name="fa6-solid:ruler-vertical" />
+              {{ data.height / 10 }}M
+            </div>
+          </div>
         </div>
         <PokemonId :poid="data.id" />
       </div>

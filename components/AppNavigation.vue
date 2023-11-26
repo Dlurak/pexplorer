@@ -1,14 +1,9 @@
 <script>
 const entries = [
   {
-    name: "Home",
+    name: "Overview",
     uri: "/",
-    icon: "heroicons:home-solid",
-  },
-  {
-    name: "Games",
-    uri: "/games",
-    icon: "heroicons:puzzle-piece-solid",
+    icon: "heroicons:square-2-stack-solid",
   },
 ];
 
