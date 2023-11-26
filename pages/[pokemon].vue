@@ -35,8 +35,8 @@ export default {
           (data.value?.types[0]?.type.name as TElement) || "unknown",
         ),
         id: data.value?.id,
-        weight: data.value?.weight,
-        height: data.value?.height,
+        weight: (data.value?.weight || 0) / 10,
+        height: (data.value?.height || 0) / 10,
 
         available: !!data.value,
       },
