@@ -29,6 +29,8 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "@nuxt/image": "^1.1.0"
+    "@hebilicious/vue-query-nuxt": "^0.2.1",
+    "@nuxt/image": "^1.1.0",
+    "@tanstack/vue-query": "^5.8.7"
   }
 }
