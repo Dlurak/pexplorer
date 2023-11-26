@@ -68,7 +68,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div>
+  <div class="lg:px-20">
     <div v-if="error">Something went wrong :/</div>
     <div v-if="data && data.pages" class="gap-3 flex flex-col">
       <ul
